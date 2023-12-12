@@ -1,0 +1,25 @@
+/* ChatPage.css */
+
+.chat-page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    height: 100vh;
+    background-color: #f0f2f5;
+}
+
+.chat-list-container {
+    width: 300px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-right: 1px solid #ddd;
+    padding: 10px;
+}
+
+.chat-window-container {
+    flex-grow: 1;
+    padding: 10px;
+}
+
+/* Add any additional styling you need here */

@@ -23,17 +23,17 @@ const EditProfilePage = () => {
         axios.get('http://127.0.0.1:8000/api/accounts/profile/', {
             headers: { Authorization: `Bearer ${accessToken}` },
         }).then(response => {
-            setFormData({ ...formData, ...response.data });
+            setFormData(f => ({ ...f, ...response.data }));
         }).catch(error => {
             console.error('Error fetching profile data', error);
         });
-    }, [navigate, accessToken]);
+    }, [navigate, accessToken]); // formData is not a dependency now
 
     const handleChange = (e) => {
         if (e.target.name === 'profile_image') {
-            setFormData({ ...formData, profile_image: e.target.files[0] });
+            setFormData(f => ({ ...f, profile_image: e.target.files[0] }));
         } else {
-            setFormData({ ...formData, [e.target.name]: e.target.value });
+            setFormData(f => ({ ...f, [e.target.name]: e.target.value }));
         }
     };
 
@@ -57,7 +57,6 @@ const EditProfilePage = () => {
                 console.error('Error updating profile', error.response.data);
             });
     };
-
     return (
         <div>
             <h1>Edit Profile</h1>

@@ -16,12 +16,14 @@ import ChatPage from "./components/chat/ChatPage";
 import EditProfilePage from "./components/auth/EditProfilePage";
 import AddReviewPage from "./components/AddReviewPage";
 import ListingDetailPage from "./components/listing/ListingDetailPage";
+import CreateListing from "./components/listing/CreateListing";
 function App() {
   return (
       <AuthProvider>
     <Router>
       <Navbar/>
       <Routes>
+        <Route path="/create-listing" element={<CreateListing />} />
         <Route path="/listings/:slug" element={<ListingDetailPage />} />
         <Route path="/edit-profile" element={<EditProfilePage />} /> {/* Add this line */}
         <Route path="/" element={<HomePage />} /> {/* Add HomePage route */}

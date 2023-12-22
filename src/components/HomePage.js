@@ -11,6 +11,7 @@ const HomePage = () => {
     const [matchedListings, setMatchedListings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+
     const accessToken = localStorage.getItem('accessToken');
     const carouselItems = [
         {

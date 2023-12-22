@@ -10,7 +10,7 @@ function LoginPage() {
     });
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const { setIsLoggedIn } = useAuth();
+    const { setIsLoggedIn, setUserRole } = useAuth(); // Import setUserRole from AuthContext
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,16 +21,17 @@ function LoginPage() {
         e.preventDefault();
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/accounts/login/', formData);
-            console.log("Login response:", response.data);
-            const { access, refresh, user_id } = response.data;
+            const { access, role } = response.data;
             localStorage.setItem('accessToken', access);
-            localStorage.setItem('userId', String(user_id));
+            localStorage.setItem('userRole', role); // Make sure this line is correctly storing the role
             setIsLoggedIn(true);
             navigate('/profile');
         } catch (error) {
             setError('Login failed. Please check your credentials and try again.');
         }
     };
+
+
 
     return (
         <div>
